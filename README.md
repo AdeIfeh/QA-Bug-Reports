@@ -15,7 +15,10 @@ Welcome to my Quality Assurance (QA) portfolio! This repository contains bug rep
 - **Bug Tracking**: GitHub Issues, Jira  
 
 ## 📂 Sample Bug Reports  
-- Check out an example bug report here: [Bug #3 - UI errors on Figma Design] (https://github.com/AdeIfeh/QA-Bug-Reports/issues/3).
+- Check out an example bug report here:
+- [Bug #3 - UI errors on Figma Design](https://github.com/AdeIfeh/QA-Bug-Reports/issues/3).
+- [Bug #2 - Errors on the Mobile Application](https://github.com/AdeIfeh/QA-Testing-Portfolio/issues/2).
+- [Bug #4 - UI errors]https://github.com/AdeIfeh/QA-Testing-Portfolio/issues/4
 
 ## 📬 Connect With Me  
 - **LinkedIn**: https://www.linkedin.com/in/elizabeth-adebayo-b42131194.  
