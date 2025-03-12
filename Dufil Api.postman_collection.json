@@ -1,0 +1,392 @@
+{
+	"info": {
+		"_postman_id": "62b8c635-0fa1-436c-a5bb-26327df966c0",
+		"name": "Dufil Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34398491",
+		"_collection_link": "https://api-team-4823.postman.co/workspace/API-Team-Workspace~bc05cd44-6354-4339-bf34-0ef433e72b5c/collection/34398491-62b8c635-0fa1-436c-a5bb-26327df966c0?action=share&source=collection_link&creator=34398491"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "SignUp",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseJSON = pm.response.json();\r",
+									"\r",
+									"// Test the response body structure and values\r",
+									"pm.test(\"Response body structure is valid\", function () {\r",
+									"    pm.expect(responseJSON).has.property('msg');\r",
+									"    pm.expect(responseJSON).has.property('data');\r",
+									"    pm.expect(responseJSON.data).has.property('email');\r",
+									"    pm.expect(responseJSON.data).has.property('first_name');\r",
+									"    pm.expect(responseJSON.data).has.property('last_name');\r",
+									"    pm.expect(responseJSON.data).has.property('role');\r",
+									"    pm.expect(responseJSON.data).has.property('_id');\r",
+									"    pm.expect(responseJSON.data).has.property('createdAt');\r",
+									"    pm.expect(responseJSON.data).has.property('updatedAt');\r",
+									"    pm.expect(responseJSON.data).has.property('__v');\r",
+									"    pm.expect(responseJSON).has.property('responseCode');\r",
+									"});\r",
+									"\r",
+									"// Test the response code for successful signup\r",
+									"pm.test(\"Response status code is 201\", function () {\r",
+									"  pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"// Validate the response to the data object for successful signup\r",
+									"pm.test(\"Email should be a string\", function () {\r",
+									"  pm.expect(responseJSON.data.email).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"First name should be a string\", function () {\r",
+									"  pm.expect(responseJSON.data.first_name).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Last name should be a string\", function () {\r",
+									"  pm.expect(responseJSON.data.last_name).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Role should be a string\", function () {\r",
+									"  pm.expect(responseJSON.data.role).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ID should be a string\", function () {\r",
+									"  pm.expect(responseJSON.data._id).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"createdAt should be a string\", function () {\r",
+									"  pm.expect(responseJSON.data.createdAt).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"updatedAt should be a string\", function () {\r",
+									"  pm.expect(responseJSON.data.updatedAt).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"__v should be a number\", function () {\r",
+									"  pm.expect(responseJSON.data.__v).to.be.a('number');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is not 400 for invalid input\", function () {\r",
+									"  pm.expect(pm.response.code).to.not.equal(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response status code is not 409 for duplicate entries\", function () {\r",
+									"    pm.expect(pm.response.code).to.not.equal(409);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response status code is not 500 for server errors\", function () {\r",
+									"  pm.expect(pm.response.code).to.not.equal(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Message is not empty for unsuccessful signup scenarios\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  pm.expect(responseData.msg).to.exist.and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Data object should not exist for unsuccessful signup scenarios\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.data).to.not.exist;\r",
+									"});\r",
+									"pm.test(\"Check if the signup message is grammatically correct\", function () {\r",
+									"    // Extract the message from the response body\r",
+									"    var responseMessage = pm.response.json().msg;\r",
+									"    \r",
+									"    // Define the expected correct message\r",
+									"    var expectedMessage = \"Sign-up Successful\";\r",
+									"    \r",
+									"    // Check if the message contains the correct spelling and structure\r",
+									"    pm.expect(responseMessage).to.eql(expectedMessage);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\" : \"Elizabeth\",\r\n    \"last_name\" : \"Adebayo\",\r\n    \"email\": \"ife1@mailinator.com\",\r\n    \"password\" : \"ifeoluwa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base-url}}auth/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "SignIn",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"// Test for response status code\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test for response body properties\r",
+									"pm.test(\"Response body has required properties\", function () {\r",
+									"  var responseData = pm.response.json().data;\r",
+									"  pm.expect(responseData).to.have.property('_id');\r",
+									"  pm.expect(responseData).to.have.property('email');\r",
+									"  pm.expect(responseData).to.have.property('first_name');\r",
+									"  pm.expect(responseData).to.have.property('last_name');\r",
+									"  pm.expect(responseData).to.have.property('role');\r",
+									"  pm.expect(responseData).to.have.property('createdAt');\r",
+									"  pm.expect(responseData).to.have.property('updatedAt');\r",
+									"  pm.expect(responseData).to.have.property('__v');\r",
+									"  pm.expect(responseData).to.have.property('token');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the signup message is grammatically correct\", function () {\r",
+									"    // Extract the message from the response body\r",
+									"    var responseMessage = pm.response.json().msg;\r",
+									"    \r",
+									"    // Define the expected correct message\r",
+									"    var expectedMessage = \"Sign-up Successful\";\r",
+									"    \r",
+									"    // Check if the message contains the correct spelling and structure\r",
+									"    pm.expect(responseMessage).to.eql(expectedMessage);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is not 404\", function () {\r",
+									"    pm.expect(pm.response.code).to.not.equal(404);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response does not contain an error field\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.error).to.not.exist;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response code is not a negative value\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.responseCode).to.be.at.least(0);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Msg field is not empty\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.msg).to.exist.and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"CreatedAt and updatedAt fields have valid date formats\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is not less than 500ms\", function() {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbl9pZCI6IjgzMDQ1N2MwLTEzNTQtNGJmOC1hZTE1LTZjNjc1YmUzZDFkNiIsImlhdCI6MTczODMxNDQ3NSwiZXhwIjoxNzM4OTE5Mjc1fQ.CZmXe-vKVOFS9XKVHsEpQPU4rJDla4g89juvoGvaPso"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"email\": \"ife1@mailinator.com\",\r\n    \"password\" : \"ifeoluwa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base-url}}auth/signin"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "Add an Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2E0YzE5ZGY5YTUzODhkNzdjZTIzMzgiLCJlbWFpbCI6ImlmZTFAbWFpbGluYXRvci5jb20iLCJpYXQiOjE3Mzg4NTE5MTUsImV4cCI6MTczODkzODMxNX0.RA3i2N2O89dls6-SKZWmPZnmaHAd4rT-fjdLEMrTgbM"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Hp Computer\",\r\n    \"description\": \"Hp make\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base-url}}item/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Get one item",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2E0YzE5ZGY5YTUzODhkNzdjZTIzMzgiLCJlbWFpbCI6ImlmZTFAbWFpbGluYXRvci5jb20iLCJpYXQiOjE3Mzg4NTE5MTUsImV4cCI6MTczODkzODMxNX0.RA3i2N2O89dls6-SKZWmPZnmaHAd4rT-fjdLEMrTgbM"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base-url}}item/findone/67a4c960f9a5388d77ce234d"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all item",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2E0YzE5ZGY5YTUzODhkNzdjZTIzMzgiLCJlbWFpbCI6ImlmZTFAbWFpbGluYXRvci5jb20iLCJpYXQiOjE3Mzg4NTE5MTUsImV4cCI6MTczODkzODMxNX0.RA3i2N2O89dls6-SKZWmPZnmaHAd4rT-fjdLEMrTgbM"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base-url}}item/findall"
+					},
+					"response": []
+				},
+				{
+					"name": "Update an Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2E0YzE5ZGY5YTUzODhkNzdjZTIzMzgiLCJlbWFpbCI6ImlmZTFAbWFpbGluYXRvci5jb20iLCJpYXQiOjE3Mzg4NTE5MTUsImV4cCI6MTczODkzODMxNX0.RA3i2N2O89dls6-SKZWmPZnmaHAd4rT-fjdLEMrTgbM"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Dell Computer\",\r\n    \"description\": \"Dell make\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base-url}}item/update/67a4ca26f9a5388d77ce2355"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2E0YzE5ZGY5YTUzODhkNzdjZTIzMzgiLCJlbWFpbCI6ImlmZTFAbWFpbGluYXRvci5jb20iLCJpYXQiOjE3Mzg4NTE5MTUsImV4cCI6MTczODkzODMxNX0.RA3i2N2O89dls6-SKZWmPZnmaHAd4rT-fjdLEMrTgbM"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base-url}}api/v1/item/delete/67a4ca26f9a5388d77ce2355"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base-url",
+			"value": "https://dufil-backend.onrender.com/api/v1/",
+			"type": "default"
+		}
+	]
+}

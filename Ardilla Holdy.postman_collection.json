@@ -1,0 +1,1317 @@
+{
+	"info": {
+		"_postman_id": "8d6ecee4-f03c-4faf-9f98-dd24a9b5e5a1",
+		"name": "Ardilla Holdy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34398491",
+		"_collection_link": "https://api-team-4823.postman.co/workspace/API-Team-Workspace~bc05cd44-6354-4339-bf34-0ef433e72b5c/collection/34398491-8d6ecee4-f03c-4faf-9f98-dd24a9b5e5a1?action=share&source=collection_link&creator=34398491"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Forgot Password",
+					"item": [
+						{
+							"name": "Forgot Password - GET OTP",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"  pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.equal(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Content-Type is application/json\", function () {\r",
+											"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Data object structure is valid\", function () {\r",
+											"  const responseData = pm.response.json();\r",
+											"  \r",
+											"  pm.expect(responseData).to.be.an('object');\r",
+											"  pm.expect(responseData.data).to.exist.and.to.be.an('object');\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Email is in a valid format\", function () {\r",
+											"    const responseData = pm.response.json();\r",
+											"    \r",
+											"    pm.expect(responseData.data.email).to.be.a('string').and.to.match(/^[\\w-]+(\\.[\\w-]+)*@[\\w-]+(\\.[\\w-]+)*(\\.[a-z]{2,})$/);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Expiry is in a valid date format\", function () {\r",
+											"    const responseData = pm.response.json();\r",
+											"    \r",
+											"    pm.expect(responseData.data).to.be.an('object');\r",
+											"    pm.expect(responseData.data.expiry).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"kodhex\":\"eyituormw\",\r\n    \"date_of_birth\":\"03-Nov-1999\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}ardilla/retail/holdy/api/v1/auth/forgot_password",
+									"host": [
+										"{{base_url}}ardilla"
+									],
+									"path": [
+										"retail",
+										"holdy",
+										"api",
+										"v1",
+										"auth",
+										"forgot_password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Forgot Password - Verify OTP",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"  pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has the required fields\", function () {\r",
+											"    const responseData = pm.response.json();\r",
+											"    \r",
+											"    pm.expect(responseData).to.be.an('object');\r",
+											"    pm.expect(responseData.code).to.exist;\r",
+											"    pm.expect(responseData.responseCode).to.exist;\r",
+											"    pm.expect(responseData.status).to.exist;\r",
+											"    pm.expect(responseData.message).to.exist;\r",
+											"    pm.expect(responseData.data).to.exist;\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Access and expiry in the data object are non-empty strings\", function () {\r",
+											"  const responseData = pm.response.json();\r",
+											"  \r",
+											"  pm.expect(responseData.data).to.exist.and.to.be.an('object');\r",
+											"  pm.expect(responseData.data.access).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Access should not be empty\");\r",
+											"  pm.expect(responseData.data.expiry).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Expiry should not be empty\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"kodhex\":\"eyituormw\",\r\n    \"otp\":\"005348\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}ardilla/retail/holdy/api/v1/auth/forgot_password/validate_otp",
+									"host": [
+										"{{base_url}}ardilla"
+									],
+									"path": [
+										"retail",
+										"holdy",
+										"api",
+										"v1",
+										"auth",
+										"forgot_password",
+										"validate_otp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Forgot Password - Set Password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response time is within an acceptable range\", function () {\r",
+											"  pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has the required fields - code, responseCode, status, and message\", function () {\r",
+											"    const responseData = pm.response.json();\r",
+											"    \r",
+											"    pm.expect(responseData).to.be.an('object');\r",
+											"    pm.expect(responseData.code).to.exist;\r",
+											"    pm.expect(responseData.responseCode).to.exist;\r",
+											"    pm.expect(responseData.status).to.exist;\r",
+											"    pm.expect(responseData.message).to.exist;\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Code is a non-empty string\", function () {\r",
+											"    const responseData = pm.response.json();\r",
+											"    \r",
+											"    pm.expect(responseData.code).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Code should be a non-empty string\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Content-Type header is application/json\", function () {\r",
+											"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"access\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDU2NTE4ZGUtNWQyYy00OGE2LWI1M2MtZDM4MWIzZGQ1MzliIiwiaWF0IjoxNzM2MTY3OTkyLCJleHAiOjE3MzYxNjg1OTJ9.d_lFFYvNzdxVMTmCJS0zYw-FuFYC3CT1sdQyVcwO_7Y\",\r\n    \"kodhex\":\"eyituormw\",\r\n    \"new_password\":\"123456Am\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}ardilla/retail/holdy/api/v1/auth/forgot_password/set",
+									"host": [
+										"{{base_url}}ardilla"
+									],
+									"path": [
+										"retail",
+										"holdy",
+										"api",
+										"v1",
+										"auth",
+										"forgot_password",
+										"set"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response time is above 200ms\", function () {\r",
+											"  pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Validate the structure and required fields in the response schema\", function () {\r",
+											"    const responseData = pm.response.json();\r",
+											"\r",
+											"    pm.expect(responseData).to.be.an('object');\r",
+											"    pm.expect(responseData).to.have.property('code');\r",
+											"    pm.expect(responseData).to.have.property('responseCode');\r",
+											"    pm.expect(responseData).to.have.property('status');\r",
+											"    pm.expect(responseData).to.have.property('message');\r",
+											"    pm.expect(responseData).to.have.property('token');\r",
+											"    pm.expect(responseData).to.have.property('data').to.be.an('object');\r",
+											"    pm.expect(responseData.data).to.have.property('user').to.be.an('object');\r",
+											"    pm.expect(responseData.data.user).to.have.property('user_id');\r",
+											"    pm.expect(responseData.data.user).to.have.property('customer_id');\r",
+											"    pm.expect(responseData.data.user).to.have.property('profile_photo');\r",
+											"    pm.expect(responseData.data.user).to.have.property('kodhex');\r",
+											"    pm.expect(responseData.data.user).to.have.property('email');\r",
+											"    pm.expect(responseData.data.user).to.have.property('phone');\r",
+											"    pm.expect(responseData.data.user).to.have.property('first_name');\r",
+											"    pm.expect(responseData.data.user).to.have.property('last_name');\r",
+											"    pm.expect(responseData.data.user).to.have.property('middle_name');\r",
+											"    pm.expect(responseData.data.user).to.have.property('date_of_birth');\r",
+											"    pm.expect(responseData.data.user).to.have.property('gender');\r",
+											"    pm.expect(responseData.data.user).to.have.property('state');\r",
+											"    pm.expect(responseData.data.user).to.have.property('lga');\r",
+											"    pm.expect(responseData.data.user).to.have.property('residential_address');\r",
+											"    pm.expect(responseData.data.user).to.have.property('bvn_hash');\r",
+											"    pm.expect(responseData.data.user).to.have.property('lga_of_origin');\r",
+											"    pm.expect(responseData.data.user).to.have.property('nationality');\r",
+											"    pm.expect(responseData.data.user).to.have.property('state_of_origin');\r",
+											"    pm.expect(responseData.data.user).to.have.property('next_of_kin').to.be.an('object');\r",
+											"    pm.expect(responseData.data.user.next_of_kin).to.have.property('email');\r",
+											"    pm.expect(responseData.data.user.next_of_kin).to.have.property('phone');\r",
+											"    pm.expect(responseData.data.user.next_of_kin).to.have.property('gender');\r",
+											"    pm.expect(responseData.data.user.next_of_kin).to.have.property('address');\r",
+											"    pm.expect(responseData.data.user.next_of_kin).to.have.property('last_name');\r",
+											"    pm.expect(responseData.data.user.next_of_kin).to.have.property('first_name');\r",
+											"    pm.expect(responseData.data.user.next_of_kin).to.have.property('relationship');\r",
+											"    pm.expect(responseData.data.user).to.have.property('dhata_user_info').to.be.an('object');\r",
+											"    pm.expect(responseData.data.user).to.have.property('kodhex_ardilla_user_bank_account').to.be.an('array');\r",
+											"    pm.expect(responseData.data.user).to.have.property('ardilla_user_kodhex_wallet').to.be.an('object');\r",
+											"    pm.expect(responseData.data.user).to.have.property('ardilla_retail_user_saving_wallet').to.be.an('object');\r",
+											"    pm.expect(responseData.data.user).to.have.property('ardilla_user_referral_tracker').to.be.an('array');\r",
+											"    pm.expect(responseData.data).to.have.property('total_interest_paid');\r",
+											"    pm.expect(responseData.data).to.have.property('settlement_account').to.be.an('object');\r",
+											"    pm.expect(responseData.data).to.have.property('kodhex_transaction_history').to.be.an('object');\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"kodhex\":\"eyituormw\",\r\n    \"password\":\"123456Am\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}ardilla/retail/holdy/api/v1/auth/login",
+									"host": [
+										"{{base_url}}ardilla"
+									],
+									"path": [
+										"retail",
+										"holdy",
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								},
+								"description": "This endpoint allows users to authenticate and obtain a token for accessing the retail API.\n\n### Status Codes:\n\n- 200: The request was successful and the authentication token is provided in the response.\n    \n\n### Response Time Test:\n\nNo specific response time test information is available for this request."
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "View Personal History",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is within an acceptable range\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.above(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.data.transaction_history).to.be.an('array');\r",
+									"\r",
+									"    responseData.data.transaction_history.forEach(history => {\r",
+									"        pm.expect(history).to.have.property('id');\r",
+									"        pm.expect(history).to.have.property('user_id');\r",
+									"        pm.expect(history).to.have.property('wallet_id');\r",
+									"        pm.expect(history).to.have.property('wallet_type');\r",
+									"        pm.expect(history).to.have.property('transaction_type');\r",
+									"        pm.expect(history).to.have.property('amount');\r",
+									"        pm.expect(history).to.have.property('status');\r",
+									"        pm.expect(history).to.have.property('date_created');\r",
+									"        pm.expect(history).to.have.property('transaction_info');\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Transaction info array is present and contains expected number of elements\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.transaction_history).to.be.an('array').that.is.not.empty;\r",
+									"    \r",
+									"    responseData.data.transaction_history.forEach(function(transaction) {\r",
+									"        pm.expect(transaction.transaction_info).to.be.an('array').that.is.not.empty;\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Validate transaction_details object within transaction_info\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"\r",
+									"    pm.expect(responseData.data.transaction_history).to.be.an('array');\r",
+									"    responseData.data.transaction_history.forEach(function(transaction) {\r",
+									"        pm.expect(transaction.transaction_info).to.be.an('array');\r",
+									"        transaction.transaction_info.forEach(function(info) {\r",
+									"            pm.expect(info.transaction_details).to.be.an('object');\r",
+									"            pm.expect(info.transaction_details.remark).to.exist.and.to.be.a('string');\r",
+									"            pm.expect(info.transaction_details.credited_to).to.exist.and.to.be.a('string');\r",
+									"            pm.expect(info.transaction_details.sender_details).to.exist.and.to.be.a('string');\r",
+									"        });\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDU2NTE4ZGUtNWQyYy00OGE2LWI1M2MtZDM4MWIzZGQ1MzliIiwiZGV2aWNlX2lkIjoibnVsbCIsInBsYXRmb3JtIjoiYXJkaWxsYS1yZXRhaWwiLCJpYXQiOjE3MzYxNjkwMDYsImV4cCI6MTczNjc3MzgwNn0.1OgKOwMbx0Zl_jLp47hysVH2E7cPKvJ15WEWV2PkHvQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}ardilla/retail/holdy/api/v1/transaction/history/personal/view?month=1&year=2025&wallet=savings-retail",
+							"host": [
+								"{{base_url}}ardilla"
+							],
+							"path": [
+								"retail",
+								"holdy",
+								"api",
+								"v1",
+								"transaction",
+								"history",
+								"personal",
+								"view"
+							],
+							"query": [
+								{
+									"key": "month",
+									"value": "1"
+								},
+								{
+									"key": "year",
+									"value": "2025"
+								},
+								{
+									"key": "wallet",
+									"value": "savings-retail"
+								}
+							]
+						},
+						"description": "### GET /ardilla/retail/holdy/api/v1/transaction/history/personal/view\n\nThis endpoint retrieves the transaction history for a personal account within a specific month and year, and for a particular wallet.\n\n#### Parameters\n\n- `month` (query parameter) - The month for which the transaction history is to be retrieved.\n    \n- `year` (query parameter) - The year for which the transaction history is to be retrieved.\n    \n- `wallet` (query parameter) - The type of wallet for which the transaction history is to be retrieved.\n    \n\n#### Response\n\n- Status: 200\n    \n- Content-Type: application/json\n    \n\n``` json\n{\n  \"code\": 0,\n  \"responseCode\": \"\",\n  \"status\": \"\",\n  \"message\": \"\",\n  \"data\": {\n    \"transaction_history\": [\n      {\n        \"id\": 0,\n        \"user_id\": \"\",\n        \"wallet_id\": \"\",\n        \"wallet_type\": \"\",\n        \"wallet_name\": \"\",\n        \"transaction_type\": \"\",\n        \"transaction_ref\": \"\",\n        \"amount\": \"\",\n        \"status\": \"\",\n        \"transaction_fee\": null,\n        \"transaction_category\": \"\",\n        \"transaction_description\": \"\",\n        \"association_id\": \"\",\n        \"previous_balance\": \"\",\n        \"current_balance\": \"\",\n        \"current_book_balance\": \"\",\n        \"cashback\": null,\n        \"date_created\": \"\",\n        \"date_last_modified\": \"\",\n        \"transaction_info\": [\n          {\n            \"id\": 0,\n            \"association_id\": \"\",\n            \"transaction_details\": {\n              \"remark\": \"\",\n              \"credited_to\": \"\",\n              \"sender_details\": \"\"\n            },\n            \"date_created\": \"\",\n            \"date_last_modified\": \"\"\n          }\n        ]\n      }\n    ]\n  }\n}\n\n ```\n\n#### Status Codes and Meanings\n\n- 200: The request was successful, and the transaction history data is returned as specified in the response body."
+					},
+					"response": []
+				},
+				{
+					"name": "View All User History",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData).to.have.property('code');\r",
+									"    pm.expect(responseData).to.have.property('responseCode');\r",
+									"    pm.expect(responseData).to.have.property('status');\r",
+									"    pm.expect(responseData).to.have.property('message');\r",
+									"    pm.expect(responseData).to.have.property('data');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Transaction history array is present and contains expected number of elements\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.have.property('data');\r",
+									"    pm.expect(responseData.data).to.have.property('transaction_history').that.is.an('array');\r",
+									"    pm.expect(responseData.data.transaction_history).to.have.lengthOf(3);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Date_created is in a valid date format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.transaction_history).to.be.an('array');\r",
+									"    responseData.data.transaction_history.forEach(function(transaction) {\r",
+									"        pm.expect(transaction.date_created).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/, \"Date_created should be in valid date format\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is above 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.above(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDU2NTE4ZGUtNWQyYy00OGE2LWI1M2MtZDM4MWIzZGQ1MzliIiwiZGV2aWNlX2lkIjoibnVsbCIsInBsYXRmb3JtIjoiYXJkaWxsYS1yZXRhaWwiLCJpYXQiOjE3MzYxNjkwMDYsImV4cCI6MTczNjc3MzgwNn0.1OgKOwMbx0Zl_jLp47hysVH2E7cPKvJ15WEWV2PkHvQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}ardilla/retail/holdy/api/v1/transaction/history/all/view?page_number=2&page_size=3",
+							"host": [
+								"{{base_url}}ardilla"
+							],
+							"path": [
+								"retail",
+								"holdy",
+								"api",
+								"v1",
+								"transaction",
+								"history",
+								"all",
+								"view"
+							],
+							"query": [
+								{
+									"key": "page_number",
+									"value": "2"
+								},
+								{
+									"key": "page_size",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Inflow",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is above 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.above(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData).to.include.all.keys('code', 'responseCode', 'status', 'message', 'data');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/*pm.test(\"Start date is in 'YYYY-MM-DD' format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.have.property('data');\r",
+									"    pm.expect(responseData.data.start_date).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Total inflow is a string\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.total_inflow).to.exist.and.to.be.a('number').and.to.satisfy((value) => value >= 0, \"Total inflow must be a string\");\r",
+									"});*/\r",
+									"pm.test(\"Start date is in 'YYYY-MM-DD' format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"\r",
+									"    // Validate that the response has a 'data' property\r",
+									"    pm.expect(responseData).to.have.property('data');\r",
+									"    \r",
+									"    // Validate that the 'start_date' is in a valid date format\r",
+									"    pm.expect(responseData.data).to.have.property('start_date');\r",
+									"    pm.expect(responseData.data.start_date).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/, \"Start date must be in ISO 8601 format\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Total inflow is a string\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"\r",
+									"    // Validate that the 'total_inflow' property exists\r",
+									"    pm.expect(responseData.data).to.have.property('total_inflow');\r",
+									"    \r",
+									"    // Validate that 'total_inflow' is a string\r",
+									"    pm.expect(responseData.data.total_inflow).to.be.a('string');\r",
+									"    \r",
+									"    // Validate that 'total_inflow' is a numeric string\r",
+									"    pm.expect(parseFloat(responseData.data.total_inflow)).to.be.a('number').and.to.satisfy((value) => value >= 0, \"Total inflow must be a non-negative numeric value\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDU2NTE4ZGUtNWQyYy00OGE2LWI1M2MtZDM4MWIzZGQ1MzliIiwiZGV2aWNlX2lkIjoibnVsbCIsInBsYXRmb3JtIjoiYXJkaWxsYS1yZXRhaWwiLCJpYXQiOjE3MzYxNjkwMDYsImV4cCI6MTczNjc3MzgwNn0.1OgKOwMbx0Zl_jLp47hysVH2E7cPKvJ15WEWV2PkHvQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}ardilla/retail/holdy/api/v1/transaction/summary/inflow?type=monthly&month=6&day=28&year=2024",
+							"host": [
+								"{{base_url}}ardilla"
+							],
+							"path": [
+								"retail",
+								"holdy",
+								"api",
+								"v1",
+								"transaction",
+								"summary",
+								"inflow"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "monthly"
+								},
+								{
+									"key": "month",
+									"value": "6"
+								},
+								{
+									"key": "day",
+									"value": "28"
+								},
+								{
+									"key": "year",
+									"value": "2024"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Saving Investment History",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is in an acceptable range\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.above(300);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// Updated response schema test to check for required fields\r",
+									"\r",
+									"        pm.test(\"Verify the response schema for required fields\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    // Assuming the response is nested under a 'data' key\r",
+									"    pm.expect(responseData).to.have.property('data');\r",
+									"    pm.expect(responseData.data).to.have.property('start_date');\r",
+									"    pm.expect(responseData.data).to.have.property('end_date');\r",
+									"    pm.expect(responseData.data).to.have.property('investment_data').that.is.an('array');\r",
+									"\r",
+									"    // Loop through each investment data item\r",
+									"    responseData.data.investment_data.forEach(function (investment) {\r",
+									"        pm.expect(investment).to.have.property('id');\r",
+									"        pm.expect(investment).to.have.property('user_id');\r",
+									"        pm.expect(investment).to.have.property('wallet_id');\r",
+									"        pm.expect(investment).to.have.property('wallet_type');\r",
+									"        pm.expect(investment).to.have.property('wallet_name');\r",
+									"        pm.expect(investment).to.have.property('transaction_type');\r",
+									"        pm.expect(investment).to.have.property('transaction_ref');\r",
+									"        pm.expect(investment).to.have.property('amount');\r",
+									"        pm.expect(investment).to.have.property('status');\r",
+									"        pm.expect(investment).to.have.property('transaction_fee');\r",
+									"        pm.expect(investment).to.have.property('transaction_category');\r",
+									"        pm.expect(investment).to.have.property('transaction_description');\r",
+									"        pm.expect(investment).to.have.property('association_id');\r",
+									"        pm.expect(investment).to.have.property('previous_balance');\r",
+									"        pm.expect(investment).to.have.property('current_balance');\r",
+									"        pm.expect(investment).to.have.property('current_book_balance');\r",
+									"        pm.expect(investment).to.have.property('date_created');\r",
+									"        pm.expect(investment).to.have.property('date_last_modified');\r",
+									"        pm.expect(investment).to.have.property('transaction_info').that.is.an('array');\r",
+									"\r",
+									"        // Loop through each transaction_info item\r",
+									"        investment.transaction_info.forEach(function (info) {\r",
+									"            pm.expect(info).to.have.property('id');\r",
+									"            pm.expect(info).to.have.property('association_id');\r",
+									"            pm.expect(info).to.have.property('transaction_details').that.is.an('object');\r",
+									"            pm.expect(info.transaction_details).to.have.property('remark');\r",
+									"            pm.expect(info.transaction_details).to.have.property('credited_to');\r",
+									"            pm.expect(info.transaction_details).to.have.property('sender_details');\r",
+									"            pm.expect(info).to.have.property('date_created');\r",
+									"            pm.expect(info).to.have.property('date_last_modified');\r",
+									"        });\r",
+									"    });\r",
+									"\r",
+									"    });\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDU2NTE4ZGUtNWQyYy00OGE2LWI1M2MtZDM4MWIzZGQ1MzliIiwiZGV2aWNlX2lkIjoibnVsbCIsInBsYXRmb3JtIjoiYXJkaWxsYS1yZXRhaWwiLCJpYXQiOjE3MzYxNjkwMDYsImV4cCI6MTczNjc3MzgwNn0.1OgKOwMbx0Zl_jLp47hysVH2E7cPKvJ15WEWV2PkHvQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}ardilla/retail/holdy/api/v1/transaction/history/investment?month=1&year=2025&wallet=savings-retail",
+							"host": [
+								"{{base_url}}ardilla"
+							],
+							"path": [
+								"retail",
+								"holdy",
+								"api",
+								"v1",
+								"transaction",
+								"history",
+								"investment"
+							],
+							"query": [
+								{
+									"key": "month",
+									"value": "1"
+								},
+								{
+									"key": "year",
+									"value": "2025"
+								},
+								{
+									"key": "wallet",
+									"value": "savings-retail"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Settlement",
+			"item": [
+				{
+					"name": "List Banks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//verify the response time\r",
+									"pm.test(\"Response time is above than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+									"});\r",
+									"\r",
+									"//verify the status code is 200\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"//verify the header\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"//verify the response structure and validate the 'is_deleted' property\r",
+									"pm.test(\"Validate the structure and content of the banks array in the response including 'is_deleted' property\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.data.banks).to.be.an('array').that.is.not.empty;\r",
+									"    \r",
+									"    responseData.data.banks.forEach(function(bank) {\r",
+									"        pm.expect(bank).to.have.property('id').that.is.a('number');\r",
+									"        pm.expect(bank).to.have.property('name').that.is.a('string');\r",
+									"        pm.expect(bank).to.have.property('slug').that.is.a('string');\r",
+									"        pm.expect(bank).to.have.property('code').that.is.a('string');\r",
+									"        pm.expect(bank).to.have.property('longcode').that.is.a('string');\r",
+									"        pm.expect(bank).to.have.property('gateway').that.is.a('string');\r",
+									"        pm.expect(bank).to.have.property('pay_with_bank').that.is.a('boolean');\r",
+									"        pm.expect(bank).to.have.property('supports_transfer').that.is.a('boolean');\r",
+									"        pm.expect(bank).to.have.property('active').that.is.a('boolean');\r",
+									"        pm.expect(bank).to.have.property('country').that.is.a('string');\r",
+									"        pm.expect(bank).to.have.property('currency').that.is.a('string');\r",
+									"        pm.expect(bank).to.have.property('type').that.is.a('string');\r",
+									"        pm.expect(bank).to.have.property('is_deleted').that.is.a('boolean'); // Updated validation for 'is_deleted' property\r",
+									"        pm.expect(bank).to.have.property('createdAt').that.is.a('string').and.to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/, \"'createdAt' should be in valid date format\");\r",
+									"        pm.expect(bank).to.have.property('updatedAt').that.is.a('string').and.to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/, \"'updatedAt' should be in valid date format\");\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDU2NTE4ZGUtNWQyYy00OGE2LWI1M2MtZDM4MWIzZGQ1MzliIiwiZGV2aWNlX2lkIjoibnVsbCIsInBsYXRmb3JtIjoiYXJkaWxsYS1yZXRhaWwiLCJpYXQiOjE3MzYxNjkwMDYsImV4cCI6MTczNjc3MzgwNn0.1OgKOwMbx0Zl_jLp47hysVH2E7cPKvJ15WEWV2PkHvQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}ardilla/retail/holdy/api/v1/settlement/banks",
+							"host": [
+								"{{base_url}}ardilla"
+							],
+							"path": [
+								"retail",
+								"holdy",
+								"api",
+								"v1",
+								"settlement",
+								"banks"
+							]
+						},
+						"description": "# Get Settlement Banks\n\nThis endpoint retrieves a list of banks available for settlement.\n\n## Response\n\n- `code`: The code indicating the status of the response.\n    \n- `responseCode`: The response code.\n    \n- `status`: The status of the response.\n    \n- `message`: The message related to the response.\n    \n- `data`: The container for the bank information.\n    \n    - `banks`: An array containing details of the available banks.\n        \n        - `id`: The unique identifier of the bank.\n            \n        - `name`: The name of the bank.\n            \n        - `slug`: The slug of the bank.\n            \n        - `code`: The code of the bank.\n            \n        - `longcode`: The long code of the bank.\n            \n        - `gateway`: The gateway used by the bank.\n            \n        - `pay_with_bank`: Indicates if payment with the bank is supported.\n            \n        - `supports_transfer`: Indicates if bank transfer is supported.\n            \n        - `active`: Indicates if the bank is currently active.\n            \n        - `country`: The country where the bank is located.\n            \n        - `currency`: The currency used by the bank.\n            \n        - `type`: The type of the bank.\n            \n        - `is_deleted`: Indicates if the bank is deleted.\n            \n        - `createdAt`: The date and time the bank was created.\n            \n        - `updatedAt`: The date and time the bank was last updated."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Settlement Account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is above 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.above(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields - code, responseCode, status, message, and data\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"\r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData).to.have.property('code');\r",
+									"    pm.expect(responseData).to.have.property('responseCode');\r",
+									"    pm.expect(responseData).to.have.property('status');\r",
+									"    pm.expect(responseData).to.have.property('message');\r",
+									"    pm.expect(responseData).to.have.property('data');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/*pm.test(\"Settlement account object and expected fields are present\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"\r",
+									"  pm.expect(responseData).to.be.an('object');\r",
+									"  pm.expect(responseData.data.settlement_account).to.exist;\r",
+									"  pm.expect(responseData.data.settlement_account.account_bank).to.exist;\r",
+									"  pm.expect(responseData.data.settlement_account.account_number).to.exist;\r",
+									"  pm.expect(responseData.data.settlement_account.account_name).to.exist;\r",
+									"});*/\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDU2NTE4ZGUtNWQyYy00OGE2LWI1M2MtZDM4MWIzZGQ1MzliIiwiZGV2aWNlX2lkIjoibnVsbCIsInBsYXRmb3JtIjoiYXJkaWxsYS1yZXRhaWwiLCJpYXQiOjE3MzYxNjkwMDYsImV4cCI6MTczNjc3MzgwNn0.1OgKOwMbx0Zl_jLp47hysVH2E7cPKvJ15WEWV2PkHvQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}ardilla/retail/holdy/api/v1/settlement/",
+							"host": [
+								"{{base_url}}ardilla"
+							],
+							"path": [
+								"retail",
+								"holdy",
+								"api",
+								"v1",
+								"settlement",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Settlement Account - GET OTP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is above 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.above(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData).to.include.all.keys('code', 'responseCode', 'status', 'message', 'data');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Email is in a valid format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.email).to.be.a('string').and.to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Expiry is in a valid date format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"\r",
+									"    pm.expect(responseData.data.expiry).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDU2NTE4ZGUtNWQyYy00OGE2LWI1M2MtZDM4MWIzZGQ1MzliIiwiZGV2aWNlX2lkIjoibnVsbCIsInBsYXRmb3JtIjoiYXJkaWxsYS1yZXRhaWwiLCJpYXQiOjE3MzYxNjkwMDYsImV4cCI6MTczNjc3MzgwNn0.1OgKOwMbx0Zl_jLp47hysVH2E7cPKvJ15WEWV2PkHvQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"account_number\":\"2100555590\",\r\n    \"bank_code\":\"033\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}ardilla/retail/holdy/api/v1/settlement/account",
+							"host": [
+								"{{base_url}}ardilla"
+							],
+							"path": [
+								"retail",
+								"holdy",
+								"api",
+								"v1",
+								"settlement",
+								"account"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Savings",
+			"item": [
+				{
+					"name": "Holdy-Silver",
+					"item": [
+						{
+							"name": "Create Holdy Silver Wallet/Plan",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status test\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDU2NTE4ZGUtNWQyYy00OGE2LWI1M2MtZDM4MWIzZGQ1MzliIiwiZGV2aWNlX2lkIjoibnVsbCIsInBsYXRmb3JtIjoiYXJkaWxsYS1yZXRhaWwiLCJpYXQiOjE3MzYxNjkwMDYsImV4cCI6MTczNjc3MzgwNn0.1OgKOwMbx0Zl_jLp47hysVH2E7cPKvJ15WEWV2PkHvQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"test\",\r\n    \"amount\":\"180000000\",\r\n    \"investment_duration\":\"2\",\r\n    \"payment_method\":\"kodhex\",\r\n    \"trans_pin\":\"252528\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}ardilla/retail/holdy/api/v1/saving/silver",
+									"host": [
+										"{{base_url}}ardilla"
+									],
+									"path": [
+										"retail",
+										"holdy",
+										"api",
+										"v1",
+										"saving",
+										"silver"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Holdy-Gold",
+					"item": [
+						{
+							"name": "Create Holdy Gold Wallet/Plan",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDU2NTE4ZGUtNWQyYy00OGE2LWI1M2MtZDM4MWIzZGQ1MzliIiwiZGV2aWNlX2lkIjoibnVsbCIsInBsYXRmb3JtIjoiYXJkaWxsYS1yZXRhaWwiLCJpYXQiOjE3MzYxNjkwMDYsImV4cCI6MTczNjc3MzgwNn0.1OgKOwMbx0Zl_jLp47hysVH2E7cPKvJ15WEWV2PkHvQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"demo\",\r\n    \"amount\":\"239999999\",\r\n    \"investment_duration\":\"2\",\r\n    \"payment_method\":\"kodhex\",\r\n    \"trans_pin\":\"252525\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}ardilla/retail/holdy/api/v1/saving/gold",
+									"host": [
+										"{{base_url}}ardilla"
+									],
+									"path": [
+										"retail",
+										"holdy",
+										"api",
+										"v1",
+										"saving",
+										"gold"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Holdy-Platinum",
+					"item": [
+						{
+							"name": "Create Holdy Platinum Wallet/Plan",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDU2NTE4ZGUtNWQyYy00OGE2LWI1M2MtZDM4MWIzZGQ1MzliIiwiZGV2aWNlX2lkIjoibnVsbCIsInBsYXRmb3JtIjoiYXJkaWxsYS1yZXRhaWwiLCJpYXQiOjE3MzYxNjkwMDYsImV4cCI6MTczNjc3MzgwNn0.1OgKOwMbx0Zl_jLp47hysVH2E7cPKvJ15WEWV2PkHvQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"demo\",\r\n    \"amount\":\"299999999\",\r\n    \"investment_duration\":\"2\",\r\n    \"payment_method\":\"kodhex\",\r\n    \"trans_pin\":\"252525\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}ardilla/retail/holdy/api/v1/saving/platinum",
+									"host": [
+										"{{base_url}}ardilla"
+									],
+									"path": [
+										"retail",
+										"holdy",
+										"api",
+										"v1",
+										"saving",
+										"platinum"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Savings data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDU2NTE4ZGUtNWQyYy00OGE2LWI1M2MtZDM4MWIzZGQ1MzliIiwiZGV2aWNlX2lkIjoibnVsbCIsInBsYXRmb3JtIjoiYXJkaWxsYS1yZXRhaWwiLCJpYXQiOjE3MzYxNjkwMDYsImV4cCI6MTczNjc3MzgwNn0.1OgKOwMbx0Zl_jLp47hysVH2E7cPKvJ15WEWV2PkHvQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}ardilla/retail/holdy/api/v1/saving",
+							"host": [
+								"{{base_url}}ardilla"
+							],
+							"path": [
+								"retail",
+								"holdy",
+								"api",
+								"v1",
+								"saving"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://ardilla-holdy-be.onrender.com/"
+		}
+	]
+}

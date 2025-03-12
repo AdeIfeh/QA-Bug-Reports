@@ -1,0 +1,440 @@
+{
+	"id": "f2b6e902-ccf9-433d-95ba-c4783598e13a",
+	"name": "Ardilla Retail Withdrawal Requests",
+	"timestamp": "2025-02-05T15:39:20.957Z",
+	"collection_id": "34398491-aefe9f70-3ae7-43c8-84f8-c48286516db3",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 27,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-02-05T15:36:38.694Z",
+	"totalFail": 3,
+	"results": [
+		{
+			"id": "edcd4956-a3c3-47ee-8458-92a7f1df813c",
+			"name": "Withdrawal History",
+			"url": "https://ardilla-retail-admin.onrender.com/ardilla/retail/admin/api/v1/withdrawal/request/history/successful/1/10",
+			"time": 2848,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Error is not present in the response": true,
+				"Response contains userId in the transaction history": true,
+				"Status code is 200": true,
+				"response time is more than 200": true
+			},
+			"testPassFailCounts": {
+				"Error is not present in the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains userId in the transaction history": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response time is more than 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2848
+			],
+			"allTests": [
+				{
+					"Error is not present in the response": true,
+					"Response contains userId in the transaction history": true,
+					"Status code is 200": true,
+					"response time is more than 200": true
+				}
+			]
+		},
+		{
+			"id": "8e87b1ab-c29a-4c57-9833-ed55c0224887",
+			"name": "Get All banks",
+			"url": "https://ardilla-retail-admin.onrender.com/ardilla/retail/admin/api/v1/withdrawal/request/banks",
+			"time": 1275,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response contains the required fields - bankCode and bankName": true,
+				"Bank code is a non-empty string": true,
+				"Bank name is a non-empty string": true,
+				"Banks array is present and contains expected number of elements": true,
+				"Response time is more than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains the required fields - bankCode and bankName": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Bank code is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Bank name is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Banks array is present and contains expected number of elements": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is more than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1275
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response contains the required fields - bankCode and bankName": true,
+					"Bank code is a non-empty string": true,
+					"Bank name is a non-empty string": true,
+					"Banks array is present and contains expected number of elements": true,
+					"Response time is more than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "124e86bb-5744-4a5a-ba19-e63fb827e3de",
+			"name": "Initiate withdrawal",
+			"url": "https://ardilla-retail-admin.onrender.com/ardilla/retail/admin/api/v1/withdrawal/request/initiate",
+			"time": 6699,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response contains the userId field": true,
+				"Response status code is 200": true,
+				"Response time is above 200ms": true,
+				"Response contains the message field": true,
+				"Response contains the status field": true,
+				"Response contains the transaction_ref field": true,
+				"Response contains bank name, bank code, account name, and account number fields": true
+			},
+			"testPassFailCounts": {
+				"Response contains the userId field": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is above 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains the message field": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains the status field": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains the transaction_ref field": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains bank name, bank code, account name, and account number fields": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6699
+			],
+			"allTests": [
+				{
+					"Response contains the userId field": true,
+					"Response status code is 200": true,
+					"Response time is above 200ms": true,
+					"Response contains the message field": true,
+					"Response contains the status field": true,
+					"Response contains the transaction_ref field": true,
+					"Response contains bank name, bank code, account name, and account number fields": true
+				}
+			]
+		},
+		{
+			"id": "330bb4da-b884-4d04-81de-c48c209dbbd7",
+			"name": "Approve",
+			"url": "https://ardilla-retail-admin.onrender.com/ardilla/retail/admin/api/v1/withdrawal/request/approve/234",
+			"time": 1981,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				1981
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6bcae1b6-cc86-4168-8d88-6b16f0e9c816",
+			"name": "Search User by Kodhex/Phone",
+			"url": "https://ardilla-retail-admin.onrender.com/ardilla/retail/admin/api/v1/withdrawal/request/search/user",
+			"time": 358,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				358
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a2fb3aa9-7c39-4196-a665-1efcd59e80bc",
+			"name": "Decline",
+			"url": "https://ardilla-retail-admin.onrender.com/ardilla/retail/admin/api/v1/withdrawal/request/decline/234",
+			"time": 2446,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2446
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0626d7c4-f3b6-4ff9-a6de-900cdb75131f",
+			"name": "Resolve beneficiary bank account",
+			"url": "https://ardilla-retail-admin.onrender.com/ardilla/retail/admin/api/v1/withdrawal/request/beneficiary_bank/resolve",
+			"time": 2722,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response contains the status field": true,
+				"Response contains bank code, account name, and account number": true,
+				"Response contains the message field": true,
+				"Response body structure is valid": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Response contains the status field": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains bank code, account name, and account number": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains the message field": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body structure is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2722
+			],
+			"allTests": [
+				{
+					"Response contains the status field": true,
+					"Response contains bank code, account name, and account number": true,
+					"Response contains the message field": true,
+					"Response body structure is valid": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "dd3a70d2-817a-4b9f-a867-f9a0c57534d0",
+			"name": "Providus withdrawal status",
+			"url": "https://ardilla-retail-admin.onrender.com/ardilla/retail/admin/api/v1/withdrawal/request/providus/transaction_status/7e1049ac-c5a4-4936-832c-f705e0bfe61f",
+			"time": 137360,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				137360
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2fcb09db-d577-4f41-82b7-51f45be21f1e",
+			"name": "Get successful withdrawal request",
+			"url": "https://ardilla-retail-admin.onrender.com/ardilla/retail/admin/api/v1/withdrawal/request/history/successful/1/10",
+			"time": 2660,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response body structure is valid": true,
+				"Each transaction object has valid properties and data types": true,
+				"Response status code is 200": true,
+				"Response time is less than 200ms": false
+			},
+			"testPassFailCounts": {
+				"Response body structure is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each transaction object has valid properties and data types": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				2660
+			],
+			"allTests": [
+				{
+					"Response body structure is valid": true,
+					"Each transaction object has valid properties and data types": true,
+					"Response status code is 200": true,
+					"Response time is less than 200ms": false
+				}
+			]
+		},
+		{
+			"id": "0fafcf33-d368-4b6d-86cd-4e8dbcbfbd4e",
+			"name": "Get failed withdrawal request",
+			"url": "https://ardilla-retail-admin.onrender.com/ardilla/retail/admin/api/v1/withdrawal/request/history/failed/1/10",
+			"time": 2263,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response body structure is valid": true,
+				"Each transaction object has valid properties and data types": true,
+				"Response status code is 400": false,
+				"Response time is less than 200ms": false
+			},
+			"testPassFailCounts": {
+				"Response body structure is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each transaction object has valid properties and data types": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response status code is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response time is less than 200ms": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				2263
+			],
+			"allTests": [
+				{
+					"Response body structure is valid": true,
+					"Each transaction object has valid properties and data types": true,
+					"Response status code is 400": false,
+					"Response time is less than 200ms": false
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 160612,
+	"collection": {
+		"requests": [
+			{
+				"id": "edcd4956-a3c3-47ee-8458-92a7f1df813c",
+				"method": "GET"
+			},
+			{
+				"id": "8e87b1ab-c29a-4c57-9833-ed55c0224887",
+				"method": "GET"
+			},
+			{
+				"id": "124e86bb-5744-4a5a-ba19-e63fb827e3de",
+				"method": "POST"
+			},
+			{
+				"id": "330bb4da-b884-4d04-81de-c48c209dbbd7",
+				"method": "POST"
+			},
+			{
+				"id": "6bcae1b6-cc86-4168-8d88-6b16f0e9c816",
+				"method": "GET"
+			},
+			{
+				"id": "a2fb3aa9-7c39-4196-a665-1efcd59e80bc",
+				"method": "POST"
+			},
+			{
+				"id": "0626d7c4-f3b6-4ff9-a6de-900cdb75131f",
+				"method": "POST"
+			},
+			{
+				"id": "dd3a70d2-817a-4b9f-a867-f9a0c57534d0",
+				"method": "GET"
+			},
+			{
+				"id": "2fcb09db-d577-4f41-82b7-51f45be21f1e",
+				"method": "GET"
+			},
+			{
+				"id": "0fafcf33-d368-4b6d-86cd-4e8dbcbfbd4e",
+				"method": "GET"
+			}
+		]
+	}
+}

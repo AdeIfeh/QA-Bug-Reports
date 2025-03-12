@@ -1,0 +1,942 @@
+{
+	"info": {
+		"_postman_id": "aefe9f70-3ae7-43c8-84f8-c48286516db3",
+		"name": "Ardilla_Retail_Withdrawal_Requests_(Web)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34398491",
+		"_collection_link": "https://api-team-4823.postman.co/workspace/API-Team-Workspace~bc05cd44-6354-4339-bf34-0ef433e72b5c/collection/34398491-aefe9f70-3ae7-43c8-84f8-c48286516db3?action=share&source=collection_link&creator=34398491"
+	},
+	"item": [
+		{
+			"name": "Withdrawal History",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Error is not present in the response\", function () {\r",
+							"    var responseData = pm.response.json();\r",
+							"    pm.expect(responseData).to.not.have.property('error');\r",
+							"});\r",
+							"pm.test(\"Response contains userId in the transaction history\", function () {\r",
+							"    var responseData = pm.response.json();\r",
+							"    var transactionHistory = responseData.data.transaction_history;\r",
+							"    \r",
+							"    transactionHistory.forEach((transaction) => {\r",
+							"        pm.expect(transaction).to.have.property('user_id');\r",
+							"    });\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"response time is more than 200\", function() {\r",
+							"    pm.expect(pm.response.responseTime).to.be.above(200)\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbl9pZCI6ImRkZWZiOWUwLThlOTYtNGE4NS04NjE5LWMxOGFiMDZkNGIyOCIsImlhdCI6MTc0MDkzNjIyMywiZXhwIjoxNzQxNTQxMDIzfQ.1s18TqNkbwa2lcMyR2lMoa5NGvK0cNXWyHJ-kLpETnE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}ardilla/retail/admin/api/v1/withdrawal/request/history/1/20?status=successful",
+					"host": [
+						"{{baseurl}}ardilla"
+					],
+					"path": [
+						"retail",
+						"admin",
+						"api",
+						"v1",
+						"withdrawal",
+						"request",
+						"history",
+						"1",
+						"20"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "successful"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All banks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains the required fields - bankCode and bankName\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.data.response.banks).to.be.an('array');\r",
+							"    \r",
+							"    responseData.data.response.banks.forEach(function(bank) {\r",
+							"        pm.expect(bank).to.have.property('bankCode');\r",
+							"        pm.expect(bank).to.have.property('bankName');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Bank code is a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.data.response.banks).to.be.an('array');\r",
+							"    \r",
+							"    responseData.data.response.banks.forEach(function(bank) {\r",
+							"        pm.expect(bank.bankCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Bank code should not be empty\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Bank name is a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData.data.response.banks).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"    responseData.data.response.banks.forEach(function (bank) {\r",
+							"        pm.expect(bank.bankName).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Bank name should not be empty\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Banks array is present and contains expected number of elements\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.data.response.banks).to.be.an('array');\r",
+							"    pm.expect(responseData.data.response.banks.length).to.be.greaterThan(0);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is more than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.above(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbl9pZCI6ImRkZWZiOWUwLThlOTYtNGE4NS04NjE5LWMxOGFiMDZkNGIyOCIsImlhdCI6MTc0MDkzNjIyMywiZXhwIjoxNzQxNTQxMDIzfQ.1s18TqNkbwa2lcMyR2lMoa5NGvK0cNXWyHJ-kLpETnE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}ardilla/retail/admin/api/v1/withdrawal/request/banks",
+					"host": [
+						"{{baseurl}}ardilla"
+					],
+					"path": [
+						"retail",
+						"admin",
+						"api",
+						"v1",
+						"withdrawal",
+						"request",
+						"banks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Initiate withdrawal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Validate response status code\r",
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Validate response time (boundary case: should respond within 2 seconds)\r",
+							"pm.test(\"Response time is within acceptable limits\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000); // Adjust threshold if needed\r",
+							"});\r",
+							"\r",
+							"// Validate response structure for error case\r",
+							"pm.test(\"Response body structure is valid for error response\", function () {\r",
+							"    try {\r",
+							"        var responseJSON = pm.response.json();\r",
+							"\r",
+							"        // Ensure response is an object\r",
+							"        pm.expect(responseJSON).to.be.an('object');\r",
+							"\r",
+							"        // Validate required properties\r",
+							"        pm.expect(responseJSON).to.have.property('code').that.equals(400);\r",
+							"        pm.expect(responseJSON).to.have.property('responseCode').that.equals(\"09\");\r",
+							"        pm.expect(responseJSON).to.have.property('status').that.equals(\"failed\");\r",
+							"        pm.expect(responseJSON).to.have.property('message').that.is.a('string');\r",
+							"        pm.expect(responseJSON).to.have.property('error').that.is.a('string');\r",
+							"\r",
+							"        // Validate expected values\r",
+							"        pm.expect(responseJSON.message).to.equal(\"This user's withdrawal request has already been completed.\");\r",
+							"        pm.expect(responseJSON.error).to.equal(\"An Error Occured!\");\r",
+							"\r",
+							"    } catch (error) {\r",
+							"        pm.test(\"Error handling - Invalid JSON response\", function () {\r",
+							"            console.error(\"Response is not a valid JSON:\", error);\r",
+							"            pm.expect.fail(\"Response body is in not expected JSON format.\");\r",
+							"        });\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"// Boundary case: Check if error message is not empty\r",
+							"pm.test(\"Error message should not be empty\", function () {\r",
+							"    var responseJSON = pm.response.json();\r",
+							"    pm.expect(responseJSON.message).to.not.be.empty;\r",
+							"    pm.expect(responseJSON.error).to.not.be.empty;\r",
+							"});\r",
+							"\r",
+							"// Boundary case: Ensure code is a valid number\r",
+							"pm.test(\"Code should be a valid HTTP error code\", function () {\r",
+							"    var responseJSON = pm.response.json();\r",
+							"    pm.expect(responseJSON.code).to.be.oneOf([400, 401, 403, 404, 500]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbl9pZCI6ImRkZWZiOWUwLThlOTYtNGE4NS04NjE5LWMxOGFiMDZkNGIyOCIsImlhdCI6MTc0MDkzNjIyMywiZXhwIjoxNzQxNTQxMDIzfQ.1s18TqNkbwa2lcMyR2lMoa5NGvK0cNXWyHJ-kLpETnE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\" : 1000,\r\n    \"kodhex\" : \"serenity\",\r\n    \"bank_code\": \"090267\",\r\n    \"account_number\": \"2003666559\",\r\n    \"bank_name\" : \"KUDA MICROFINANCE BANK\"\r\n  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}ardilla/retail/admin/api/v1/withdrawal/request/initiate",
+					"host": [
+						"{{baseurl}}ardilla"
+					],
+					"path": [
+						"retail",
+						"admin",
+						"api",
+						"v1",
+						"withdrawal",
+						"request",
+						"initiate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search User by Kodhex/Phone",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/// Validate response body structure and required properties\r",
+							"pm.test(\"Response body structure is valid\", function () {\r",
+							"    var responseJSON = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseJSON).to.be.an('object');\r",
+							"\r",
+							"    // Ensure required properties exist\r",
+							"    pm.expect(responseJSON).to.have.property('code');\r",
+							"    pm.expect(responseJSON).to.have.property('responseCode');\r",
+							"    pm.expect(responseJSON).to.have.property('status');\r",
+							"    pm.expect(responseJSON).to.have.property('message');\r",
+							"\r",
+							"    // Check if 'data' exists only for successful responses\r",
+							"    if (responseJSON.code === 200) {\r",
+							"        pm.expect(responseJSON).to.have.property('data');\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body structure is valid\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    if (jsonData.code === 200) {\r",
+							"        pm.expect(jsonData).to.have.property(\"data\");  // Check only for success responses\r",
+							"    } else {\r",
+							"        pm.expect(jsonData).to.have.property(\"message\");  // Handle error responses\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"// Test to validate the response time\r",
+							"pm.test(\"Response time is more than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.above(500);\r",
+							"});\r",
+							"// Test the response status code\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"// Negative assertion to check for the absence of a certain element in the response body\r",
+							"pm.test(\"Absence of a specific element in the response body\", function () {\r",
+							"    var responseJSON = pm.response.json();\r",
+							"    pm.expect(responseJSON).to.not.have.property('balance');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbl9pZCI6ImRkZWZiOWUwLThlOTYtNGE4NS04NjE5LWMxOGFiMDZkNGIyOCIsImlhdCI6MTc0MDkzNjIyMywiZXhwIjoxNzQxNTQxMDIzfQ.1s18TqNkbwa2lcMyR2lMoa5NGvK0cNXWyHJ-kLpETnE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"kodhex\": \"serenity\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}ardilla/retail/admin/api/v1/withdrawal/request/search/user",
+					"host": [
+						"{{baseurl}}ardilla"
+					],
+					"path": [
+						"retail",
+						"admin",
+						"api",
+						"v1",
+						"withdrawal",
+						"request",
+						"search",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Approve",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Validate response status code\r",
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Validate response time (boundary case: should respond within 2 seconds)\r",
+							"pm.test(\"Response time is within acceptable limits\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000); // Adjust threshold if needed\r",
+							"});\r",
+							"\r",
+							"// Validate response structure for error case\r",
+							"pm.test(\"Response body structure is valid for error response\", function () {\r",
+							"    try {\r",
+							"        var responseJSON = pm.response.json();\r",
+							"\r",
+							"        // Ensure response is an object\r",
+							"        pm.expect(responseJSON).to.be.an('object');\r",
+							"\r",
+							"        // Validate required properties\r",
+							"        pm.expect(responseJSON).to.have.property('code').that.equals(400);\r",
+							"        pm.expect(responseJSON).to.have.property('responseCode').that.equals(\"09\");\r",
+							"        pm.expect(responseJSON).to.have.property('status').that.equals(\"failed\");\r",
+							"        pm.expect(responseJSON).to.have.property('message').that.is.a('string');\r",
+							"        pm.expect(responseJSON).to.have.property('error').that.is.a('string');\r",
+							"\r",
+							"        // Validate expected values\r",
+							"        pm.expect(responseJSON.message).to.equal(\"This user's withdrawal request has already been completed.\");\r",
+							"        pm.expect(responseJSON.error).to.equal(\"An Error Occured!\");\r",
+							"\r",
+							"    } catch (error) {\r",
+							"        pm.test(\"Error handling - Invalid JSON response\", function () {\r",
+							"            console.error(\"Response is not a valid JSON:\", error);\r",
+							"            pm.expect.fail(\"Response body is not in expected JSON format.\");\r",
+							"        });\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"// Boundary case: Check if error message is not empty\r",
+							"pm.test(\"Error message should not be empty\", function () {\r",
+							"    var responseJSON = pm.response.json();\r",
+							"    pm.expect(responseJSON.message).to.not.be.empty;\r",
+							"    pm.expect(responseJSON.error).to.not.be.empty;\r",
+							"});\r",
+							"\r",
+							"// Boundary case: Ensure code is a valid number\r",
+							"pm.test(\"Code should be a valid HTTP error code\", function () {\r",
+							"    var responseJSON = pm.response.json();\r",
+							"    pm.expect(responseJSON.code).to.be.oneOf([400, 401, 403, 404, 500]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbl9pZCI6ImRkZWZiOWUwLThlOTYtNGE4NS04NjE5LWMxOGFiMDZkNGIyOCIsImlhdCI6MTc0MDkzNjIyMywiZXhwIjoxNzQxNTQxMDIzfQ.1s18TqNkbwa2lcMyR2lMoa5NGvK0cNXWyHJ-kLpETnE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}ardilla/retail/admin/api/v1/withdrawal/request/approve/324",
+					"host": [
+						"{{baseurl}}ardilla"
+					],
+					"path": [
+						"retail",
+						"admin",
+						"api",
+						"v1",
+						"withdrawal",
+						"request",
+						"approve",
+						"324"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Decline",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Validate response status code\r",
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Validate response time (boundary case: should respond within 2 seconds)\r",
+							"pm.test(\"Response time is within acceptable limits\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000); // Adjust threshold if needed\r",
+							"});\r",
+							"\r",
+							"// Validate response structure for error case\r",
+							"pm.test(\"Response body structure is valid for error response\", function () {\r",
+							"    try {\r",
+							"        var responseJSON = pm.response.json();\r",
+							"\r",
+							"        // Ensure response is an object\r",
+							"        pm.expect(responseJSON).to.be.an('object');\r",
+							"\r",
+							"        // Validate required properties\r",
+							"        pm.expect(responseJSON).to.have.property('code').that.equals(400);\r",
+							"        pm.expect(responseJSON).to.have.property('responseCode').that.equals(\"09\");\r",
+							"        pm.expect(responseJSON).to.have.property('status').that.equals(\"failed\");\r",
+							"        pm.expect(responseJSON).to.have.property('message').that.is.a('string');\r",
+							"        pm.expect(responseJSON).to.have.property('error').that.is.a('string');\r",
+							"\r",
+							"        // Validate expected values\r",
+							"        pm.expect(responseJSON.message).to.equal(\"This user's withdrawal request has already been completed.\");\r",
+							"        pm.expect(responseJSON.error).to.equal(\"An Error Occured!\");\r",
+							"\r",
+							"    } catch (error) {\r",
+							"        pm.test(\"Error handling - Invalid JSON response\", function () {\r",
+							"            console.error(\"Response is not a valid JSON:\", error);\r",
+							"            pm.expect.fail(\"Response body is not in expected JSON format.\");\r",
+							"        });\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"// Boundary case: Check if error message is not empty\r",
+							"pm.test(\"Error message should not be empty\", function () {\r",
+							"    var responseJSON = pm.response.json();\r",
+							"    pm.expect(responseJSON.message).to.not.be.empty;\r",
+							"    pm.expect(responseJSON.error).to.not.be.empty;\r",
+							"});\r",
+							"\r",
+							"// Boundary case: Ensure code is a valid number\r",
+							"pm.test(\"Code should be a valid HTTP error code\", function () {\r",
+							"    var responseJSON = pm.response.json();\r",
+							"    pm.expect(responseJSON.code).to.be.oneOf([400, 401, 403, 404, 500]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbl9pZCI6ImRkZWZiOWUwLThlOTYtNGE4NS04NjE5LWMxOGFiMDZkNGIyOCIsImlhdCI6MTc0MDkzNjIyMywiZXhwIjoxNzQxNTQxMDIzfQ.1s18TqNkbwa2lcMyR2lMoa5NGvK0cNXWyHJ-kLpETnE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reason\": \"no fund to pay\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}ardilla/retail/admin/api/v1/withdrawal/request/decline/324",
+					"host": [
+						"{{baseurl}}ardilla"
+					],
+					"path": [
+						"retail",
+						"admin",
+						"api",
+						"v1",
+						"withdrawal",
+						"request",
+						"decline",
+						"324"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Otp",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbl9pZCI6ImRkZWZiOWUwLThlOTYtNGE4NS04NjE5LWMxOGFiMDZkNGIyOCIsImlhdCI6MTc0MDkzNjIyMywiZXhwIjoxNzQxNTQxMDIzfQ.1s18TqNkbwa2lcMyR2lMoa5NGvK0cNXWyHJ-kLpETnE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\":\"@heaphe\",\r\n    \"email\":\"elizabeth.stackivy@gmail.com\"\r\n}\r\n\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}ardilla/retail/admin/api/v1/auth/generate_login_otp",
+					"host": [
+						"{{baseurl}}ardilla"
+					],
+					"path": [
+						"retail",
+						"admin",
+						"api",
+						"v1",
+						"auth",
+						"generate_login_otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login as Initiator",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"otpGeneratedTime\", new Date().getTime());\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Validate response status code\r",
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Validate response time (boundary case: should respond within 2 seconds)\r",
+							"pm.test(\"Response time is within acceptable limits\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000); // Adjust threshold if needed\r",
+							"});\r",
+							"\r",
+							"// Validate response structure for OTP expiration\r",
+							"pm.test(\"Response body structure is valid for OTP expiration\", function () {\r",
+							"    try {\r",
+							"        var responseJSON = pm.response.json();\r",
+							"\r",
+							"        // Ensure response is an object\r",
+							"        pm.expect(responseJSON).to.be.an('object');\r",
+							"\r",
+							"        // Validate required properties\r",
+							"        pm.expect(responseJSON).to.have.property('code').that.equals(400);\r",
+							"        pm.expect(responseJSON).to.have.property('responseCode').that.equals(\"09\");\r",
+							"        pm.expect(responseJSON).to.have.property('status').that.equals(\"failed\");\r",
+							"        pm.expect(responseJSON).to.have.property('message').that.is.a('string');\r",
+							"        pm.expect(responseJSON).to.have.property('error').that.is.a('string');\r",
+							"\r",
+							"        // Validate expected message values\r",
+							"        pm.expect(responseJSON.message).to.equal(\"Login Request Not Found or Expired, Please Try Again\");\r",
+							"        pm.expect(responseJSON.error).to.equal(\"An Error Occured!\");\r",
+							"\r",
+							"    } catch (error) {\r",
+							"        pm.test(\"Error handling - Invalid JSON response\", function () {\r",
+							"            console.error(\"Response is not a valid JSON:\", error);\r",
+							"            pm.expect.fail(\"Response body is not in expected JSON format.\");\r",
+							"        });\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"// Boundary case: Check if error message is not empty\r",
+							"pm.test(\"Error message should not be empty\", function () {\r",
+							"    var responseJSON = pm.response.json();\r",
+							"    pm.expect(responseJSON.message).to.not.be.empty;\r",
+							"    pm.expect(responseJSON.error).to.not.be.empty;\r",
+							"});\r",
+							"\r",
+							"// Boundary case: Ensure code is a valid HTTP error code\r",
+							"pm.test(\"Code should be a valid HTTP error code\", function () {\r",
+							"    var responseJSON = pm.response.json();\r",
+							"    pm.expect(responseJSON.code).to.be.oneOf([400, 401, 403, 404, 500]);\r",
+							"});\r",
+							"\r",
+							"// Check if OTP expired correctly after 10 minutes\r",
+							"pm.test(\"OTP should expire after 10 minutes\", function () {\r",
+							"    let otpGeneratedTime = pm.globals.get(\"otpGeneratedTime\"); // Assuming you saved OTP generation time\r",
+							"    let currentTime = new Date().getTime(); // Current timestamp\r",
+							"\r",
+							"    if (otpGeneratedTime) {\r",
+							"        let elapsedTime = (currentTime - otpGeneratedTime) / (1000 * 60); // Convert to minutes\r",
+							"        pm.expect(elapsedTime).to.be.at.least(10, \"OTP should expire after 10 minutes\");\r",
+							"    } else {\r",
+							"        console.warn(\"OTP generated time is not stored in globals.\");\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbl9pZCI6ImRkZWZiOWUwLThlOTYtNGE4NS04NjE5LWMxOGFiMDZkNGIyOCIsImlhdCI6MTc0MDkzNjIyMywiZXhwIjoxNzQxNTQxMDIzfQ.1s18TqNkbwa2lcMyR2lMoa5NGvK0cNXWyHJ-kLpETnE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"otp\": \"3684696\",\r\n    \"email\": \"iadebayoelizabeth@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}ardilla/retail/admin/api/v1/auth/login",
+					"host": [
+						"{{baseurl}}ardilla"
+					],
+					"path": [
+						"retail",
+						"admin",
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login as Checker",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbl9pZCI6ImRkZWZiOWUwLThlOTYtNGE4NS04NjE5LWMxOGFiMDZkNGIyOCIsImlhdCI6MTc0MDkzNjIyMywiZXhwIjoxNzQxNTQxMDIzfQ.1s18TqNkbwa2lcMyR2lMoa5NGvK0cNXWyHJ-kLpETnE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"otp\":\"5157962\",\r\n    \"email\":\"elizabeth.stackivy@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}ardilla/retail/admin/api/v1/auth/login",
+					"host": [
+						"{{baseurl}}ardilla"
+					],
+					"path": [
+						"retail",
+						"admin",
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Resolve beneficiary bank account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is within acceptable limits\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000); // Expect response time under 2s\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body structure is valid\", function () {\r",
+							"    let responseJSON = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseJSON).to.be.an('object');\r",
+							"\r",
+							"    pm.expect(responseJSON).to.have.property(\"code\", 400);\r",
+							"    pm.expect(responseJSON).to.have.property(\"responseCode\", \"09\");\r",
+							"    pm.expect(responseJSON).to.have.property(\"status\", \"failed\");\r",
+							"    pm.expect(responseJSON).to.have.property(\"message\", \"only initiator can resolve account name\");\r",
+							"    pm.expect(responseJSON).to.have.property(\"error\", \"An Error Occurred!\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Error message should not be empty\", function () {\r",
+							"    let responseJSON = pm.response.json();\r",
+							"    pm.expect(responseJSON.error).to.be.a('string').and.not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Boundary case: Ensure unexpected fields do not exist\", function () {\r",
+							"    let responseJSON = pm.response.json();\r",
+							"    let expectedKeys = [\"code\", \"responseCode\", \"status\", \"message\", \"error\"];\r",
+							"    \r",
+							"    let actualKeys = Object.keys(responseJSON);\r",
+							"    pm.expect(actualKeys).to.have.members(expectedKeys);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbl9pZCI6ImRkZWZiOWUwLThlOTYtNGE4NS04NjE5LWMxOGFiMDZkNGIyOCIsImlhdCI6MTc0MDkzNjIyMywiZXhwIjoxNzQxNTQxMDIzfQ.1s18TqNkbwa2lcMyR2lMoa5NGvK0cNXWyHJ-kLpETnE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \r\n    \"bank_code\": \"090267\",\r\n    \"account_number\": \"2003666559\"\r\n   \r\n  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}ardilla/retail/admin/api/v1/withdrawal/request/beneficiary_bank/resolve",
+					"host": [
+						"{{baseurl}}ardilla"
+					],
+					"path": [
+						"retail",
+						"admin",
+						"api",
+						"v1",
+						"withdrawal",
+						"request",
+						"beneficiary_bank",
+						"resolve"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbl9pZCI6IjhiNGY1YjRjLWFkYTktNDYyNC05Y2QzLWE3ZDdjOTM0NTQ4YiIsImlhdCI6MTczOTg3MDc5OSwiZXhwIjoxNzQwNDc1NTk5fQ.xG_3GnyUMcCrvTn8xHapMLBehI7YcP4bZCYcKLPARDE",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "https://ardilla-retail-admin.onrender.com/",
+			"type": "default"
+		}
+	]
+}

@@ -1,0 +1,2380 @@
+{
+	"info": {
+		"_postman_id": "60c09c4c-6a89-4d0e-86af-98f58af7254d",
+		"name": "Hargon App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34398491",
+		"_collection_link": "https://api-team-4823.postman.co/workspace/API-Team-Workspace~bc05cd44-6354-4339-bf34-0ef433e72b5c/collection/34398491-60c09c4c-6a89-4d0e-86af-98f58af7254d?action=share&source=collection_link&creator=34398491"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Forgot Password",
+					"item": [
+						{
+							"name": "Initiate forgot password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzEwNjcwOTQsImV4cCI6MTczMTY3MTg5NH0.tw5lKamy2JhQYZd_Pn_8ZjGyCLN4MrAt6V05s45MgME",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone\":\"+2348099279811\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}auth/forgot_password",
+									"host": [
+										"{{baseurl}}auth"
+									],
+									"path": [
+										"forgot_password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Forgot password Otp",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzEwNjcwOTQsImV4cCI6MTczMTY3MTg5NH0.tw5lKamy2JhQYZd_Pn_8ZjGyCLN4MrAt6V05s45MgME",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone\":\"+2348099279811\",\r\n    \"bvn\":\"22399170249\",\r\n    \"date_of_birth\":\"06-OCT-1992\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}auth/forgot_password/otp",
+									"host": [
+										"{{baseurl}}auth"
+									],
+									"path": [
+										"forgot_password",
+										"otp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Validate Forgot password Otp",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzEwNjcwOTQsImV4cCI6MTczMTY3MTg5NH0.tw5lKamy2JhQYZd_Pn_8ZjGyCLN4MrAt6V05s45MgME",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone\":\"+2348099279811\",\r\n    \"otp\":\"3317\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}auth/forgot_password/validate_otp",
+									"host": [
+										"{{baseurl}}auth"
+									],
+									"path": [
+										"forgot_password",
+										"validate_otp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Set password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzEwNjcwOTQsImV4cCI6MTczMTY3MTg5NH0.tw5lKamy2JhQYZd_Pn_8ZjGyCLN4MrAt6V05s45MgME",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone\":\"+2348099279811\",\r\n    \"password\":\"123456Am\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}auth/forgot_password/b3e71824-a76a-465e-b357-6d7cec8d6d78",
+									"host": [
+										"{{baseurl}}auth"
+									],
+									"path": [
+										"forgot_password",
+										"b3e71824-a76a-465e-b357-6d7cec8d6d78"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzEwNjcwOTQsImV4cCI6MTczMTY3MTg5NH0.tw5lKamy2JhQYZd_Pn_8ZjGyCLN4MrAt6V05s45MgME",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "New Device",
+					"item": [
+						{
+							"name": "Authenticate Login Device",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzEwNjcwOTQsImV4cCI6MTczMTY3MTg5NH0.tw5lKamy2JhQYZd_Pn_8ZjGyCLN4MrAt6V05s45MgME",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"kodhex\":\"toweh1\",\r\n    \"password\": \"1234567\",\r\n    \"trans_pin\": \"000000\",\r\n    \"device_serial\": \"1234\",\r\n    \"device_name\": \"demo phone\",\r\n    \"device_os\": \"demo os\",\r\n     \"device_notification_token\": \"5678839393\",\r\n    \"device_location\":{\r\n        \"longitude\":\"123\",\r\n        \"latitude\":\"123\"\r\n    }\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}auth/authenticate_login/device",
+									"host": [
+										"{{baseurl}}auth"
+									],
+									"path": [
+										"authenticate_login",
+										"device"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Device Otp verification",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzEwNjcwOTQsImV4cCI6MTczMTY3MTg5NH0.tw5lKamy2JhQYZd_Pn_8ZjGyCLN4MrAt6V05s45MgME",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"kodhex\": \"toweh1\",\r\n    \"otp\": \"3335\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}auth/authenticate_login/device/verify_otp",
+									"host": [
+										"{{baseurl}}auth"
+									],
+									"path": [
+										"authenticate_login",
+										"device",
+										"verify_otp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check Account Existence",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzEwNjcwOTQsImV4cCI6MTczMTY3MTg5NH0.tw5lKamy2JhQYZd_Pn_8ZjGyCLN4MrAt6V05s45MgME",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone\": \"+2349155669681\",\r\n    \"email\": \"iadebayoelizabeth@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}auth/check_account_existence",
+									"host": [
+										"{{baseurl}}auth"
+									],
+									"path": [
+										"check_account_existence"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check user kodhex existence",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzEwNjcwOTQsImV4cCI6MTczMTY3MTg5NH0.tw5lKamy2JhQYZd_Pn_8ZjGyCLN4MrAt6V05s45MgME",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"kodhex\": \"serenity\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}auth/check_user_kodhex_existence",
+									"host": [
+										"{{baseurl}}auth"
+									],
+									"path": [
+										"check_user_kodhex_existence"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Contact verification",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzEwNjcwOTQsImV4cCI6MTczMTY3MTg5NH0.tw5lKamy2JhQYZd_Pn_8ZjGyCLN4MrAt6V05s45MgME",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"kodhex\": \"serenity\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}auth/check_user_kodhex_existence",
+									"host": [
+										"{{baseurl}}auth"
+									],
+									"path": [
+										"check_user_kodhex_existence"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzEwNzY5MjMsImV4cCI6MTczMTY4MTcyM30.nzIW3NChIJKnHfPOTfaLrt4Y34ZO8eg09-2hXXbUkt4",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "czN5_HwMRWyfrGb-J4WfJf:APA91bGdCtLKHXG33a_8WuV5otRpdSHJ77Fli96dRusLc6JcoHaHbKOdeVZzrBQuuUl-ORH7q7bOcGp_E8gl7H9dChoteK25SKgXpfnFE0xYvjQQEfzZkHtjAHFVMNaQecl3h6VmsVW4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"kodhex\":\"serenity\",\r\n    \"password\": \"123456Am\",\r\n    \"device_serial\": \"samsung/a31xx/a31:12/SP1A.210812.016/A315FXXS4DWH1:user/release-keys\",\r\n    \"device_name\": \"SM-A315F\",\r\n    \"device_os\": \"Android 12\",\r\n    \"device_notification_token\": \"czN5_HwMRWyfrGb-J4WfJf:APA91bGdCtLKHXG33a_8WuV5otRpdSHJ77Fli96dRusLc6JcoHaHbKOdeVZzrBQuuUl-ORH7q7bOcGp_E8gl7H9dChoteK25SKgXpfnFE0xYvjQQEfzZkHtjAHFVMNaQecl3h6VmsVW4\",\r\n    \"device_location\":{\r\n        \"longitude\":\"123\",\r\n        \"latitude\":\"123\"\r\n    }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}auth/login",
+							"host": [
+								"{{baseurl}}auth"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"kodhex\":\"serenity\",\r\n   \"security_question_answer\":\"lag\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}auth/authenticate_login",
+							"host": [
+								"{{baseurl}}auth"
+							],
+							"path": [
+								"authenticate_login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set_Config",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZGY0NGI1MTAtNWFkOS00NmM3LWIyZWQtMmZlMWQ1ZTRmZDgwIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzM5OTEsImV4cCI6MTczMTU3ODc5MX0.ldjhCPQb8TqOLDA5NgDoohyGVESmj-ChLqEVr8Dfyrs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"kodhex\":\"heaphe\",\r\n   \"security_question_answer\":\"lag\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}auth/authenticate_login",
+							"host": [
+								"{{baseurl}}auth"
+							],
+							"path": [
+								"authenticate_login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzEwNzY5MjMsImV4cCI6MTczMTY4MTcyM30.nzIW3NChIJKnHfPOTfaLrt4Y34ZO8eg09-2hXXbUkt4",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Bills",
+			"item": [
+				{
+					"name": "Get biller group enquiry",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}bill/biller_groups_enquiry/data",
+							"host": [
+								"{{baseurl}}bill"
+							],
+							"path": [
+								"biller_groups_enquiry",
+								"data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get biller group package enquiry Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}bill/biller_groups_package/mtn-data",
+							"host": [
+								"{{baseurl}}bill"
+							],
+							"path": [
+								"biller_groups_package",
+								"mtn-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vend",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "2eddd511b51f448e5694451487a8c274",
+								"type": "text"
+							},
+							{
+								"key": "secret-key",
+								"value": "SK_515c5c89dbf6a6f84464f1935e38cc9eb641a782e86",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"bill_type\": \"airtime\",\r\n  \"service_id\": \"mtn\",\r\n\"amount\": 700,\r\n\"phone\": \"08011111111\",\r\n\"payment_method\": \"kodhex-hargon\",\r\n\"trans_pin\":\"252525\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}bill/pay",
+							"host": [
+								"{{baseurl}}bill"
+							],
+							"path": [
+								"pay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query a transaction",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "2eddd511b51f448e5694451487a8c274",
+								"type": "text"
+							},
+							{
+								"key": "secret-key",
+								"value": "SK_515c5c89dbf6a6f84464f1935e38cc9eb641a782e86",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"bill_type\":\"electricity_bill\",\r\n    \"service_id\": \"ikeja-electric\", \r\n    \"billers_code\": 1111111111111,\r\n    \"type\": \"prepaid\" \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}bill/customer_enquiry",
+							"host": [
+								"{{baseurl}}bill"
+							],
+							"path": [
+								"customer_enquiry"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Card",
+			"item": [
+				{
+					"name": "Initialize Card",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}card/initialize",
+							"host": [
+								"{{baseurl}}card"
+							],
+							"path": [
+								"initialize"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reference\": \"8e222e59-f5e3-43de-90ca-4c15d9e96d49\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}card/verify",
+							"host": [
+								"{{baseurl}}card"
+							],
+							"path": [
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Card topup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reference\": \"8e222e59-f5e3-43de-90ca-4c15d9e96d49\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}card/verify",
+							"host": [
+								"{{baseurl}}card"
+							],
+							"path": [
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Card",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reference\": \"8e222e59-f5e3-43de-90ca-4c15d9e96d49\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}card/verify",
+							"host": [
+								"{{baseurl}}card"
+							],
+							"path": [
+								"verify"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "Referral",
+					"item": [
+						{
+							"name": "Referral query prototype",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}referral/query",
+									"host": [
+										"{{baseurl}}referral"
+									],
+									"path": [
+										"query"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Referral count",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}referral/query",
+									"host": [
+										"{{baseurl}}referral"
+									],
+									"path": [
+										"query"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Hargon",
+					"item": [
+						{
+							"name": "Hargon Send money resolve",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \r\n    \"kodhex\": \"toweh1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}payment/sendmoney/hargon/resolve",
+									"host": [
+										"{{baseurl}}payment"
+									],
+									"path": [
+										"sendmoney",
+										"hargon",
+										"resolve"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Hargon Get Beneficiary",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \r\n    \"kodhex\": \"toweh1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}payment/sendmoney/hargon/resolve",
+									"host": [
+										"{{baseurl}}payment"
+									],
+									"path": [
+										"sendmoney",
+										"hargon",
+										"resolve"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Contacts on kodhex",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"contacts\": [\r\n        {\r\n            \"name\": \"jkk\",\r\n            \"phone\": \"+2348099279818\"\r\n        },\r\n        {\r\n            \"name\": \"jason\",\r\n            \"phone\": \"08119266959\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}user/contacts_on_kodhex",
+									"host": [
+										"{{baseurl}}user"
+									],
+									"path": [
+										"contacts_on_kodhex"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Other bank",
+					"item": [
+						{
+							"name": "Get beneficiary other bank",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}payment/sendmoney/other_bank",
+									"host": [
+										"{{baseurl}}payment"
+									],
+									"path": [
+										"sendmoney",
+										"other_bank"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Money resolve",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"bank_code\":\"070010\",\r\n    \"bank_name\":\"ABBEY MORTGAGE BANK\",\r\n    \"account_number\":\"2100555589\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}payment/sendmoney/other_bank/resolve",
+									"host": [
+										"{{baseurl}}payment"
+									],
+									"path": [
+										"sendmoney",
+										"other_bank",
+										"resolve"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Savings",
+			"item": [
+				{
+					"name": "Dib",
+					"item": [
+						{
+							"name": "Create Dib wallet",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MTg3MzAsImV4cCI6MTczMTQyMzUzMH0.EArPNuk8iYLTttRwrM2Ryu-SlJNuRI54MTThpHfudyA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amount\": \"49\",\r\n    \"frequency\": \"daily\",\r\n    \"day_of_month\": \"28.7\",\r\n    \"day_of_week\": \"sunday\",\r\n    \"auto_deposit\": true,\r\n    \"show_estimate\": false,\r\n    \"payment_method\": \"kodhex\",\r\n    \"trans_pin\": \"000000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}saving/create_saving_dib_wallet",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"create_saving_dib_wallet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Dib wallet",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MTg3MzAsImV4cCI6MTczMTQyMzUzMH0.EArPNuk8iYLTttRwrM2Ryu-SlJNuRI54MTThpHfudyA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}saving/dib_wallet",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"dib_wallet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Dib wallet",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MTg3MzAsImV4cCI6MTczMTQyMzUzMH0.EArPNuk8iYLTttRwrM2Ryu-SlJNuRI54MTThpHfudyA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amount\":\"10000\",\r\n    \"payment_method\":\"savings\",\r\n    \"trans_pin\":\"000000\",\r\n    \"show_estimate\":false,\r\n    \"auto_deposit\": true,\r\n    \"day_of_month\":\"27\",\r\n    \"day_of_week\":\"tuesday\",\r\n    \"frequency\": \"monthly\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}saving/update_dib_wallet",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"update_dib_wallet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Dib wallet top-up",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MTg3MzAsImV4cCI6MTczMTQyMzUzMH0.EArPNuk8iYLTttRwrM2Ryu-SlJNuRI54MTThpHfudyA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amount\":\"200.755\",\r\n    \"payment_method\":\"kodhex\",\r\n    \"trans_pin\":\"000000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}saving/dib_wallet/topup",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"dib_wallet",
+										"topup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Dib wallet withdrawal",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MTg3MzAsImV4cCI6MTczMTQyMzUzMH0.EArPNuk8iYLTttRwrM2Ryu-SlJNuRI54MTThpHfudyA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amount\":\"200.555\",\r\n    \"payment_method\":\"kodhex\",\r\n        \"trans_pin\":\"000000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}saving/dib_wallet/withdraw",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"dib_wallet",
+										"withdraw"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Vault",
+					"item": [
+						{
+							"name": "Create Vault wallet",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"target_amount\":\"60000\",\r\n    \"start_date\":\"2024-11-05T13:38:00.641Z\",\r\n    \"end_date\":\"2025-06-03T13:38:00.641Z\",\r\n    \"time\":\"13:35\",\r\n    \"auto_deposit\":false,\r\n    \"frequency\":\"monthly\",\r\n    \"show_estimate\":false,\r\n    \"name\":\"demo\", \r\n    \"trans_pin\":\"000000\",\r\n    \"payment_method\":\"kodhex\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}saving/vault_wallet/plan",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"vault_wallet",
+										"plan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get user Vault Wallet",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MTg3MzAsImV4cCI6MTczMTQyMzUzMH0.EArPNuk8iYLTttRwrM2Ryu-SlJNuRI54MTThpHfudyA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}saving/vault_wallet",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"vault_wallet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Vault plan",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MTg3MzAsImV4cCI6MTczMTQyMzUzMH0.EArPNuk8iYLTttRwrM2Ryu-SlJNuRI54MTThpHfudyA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"target_amount\":\"5000\",\r\n   \"start_date\":\"2024-11-05T13:38:00.641Z\",\r\n    \"end_date\":\"2025-06-04T08:30:00.641Z\",\r\n    \"time\":\"13:00\",\r\n    \"auto_deposit\":true,\r\n    \"frequency\":\"monthly\",\r\n    \"show_estimate\":false,\r\n    \"name\":\"testing\", \r\n    \"trans_pin\":\"000000\",\r\n    \"payment_method\":\"kodhex\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}saving/vault_wallet/plan",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"vault_wallet",
+										"plan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Vault Topup plan",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MTg3MzAsImV4cCI6MTczMTQyMzUzMH0.EArPNuk8iYLTttRwrM2Ryu-SlJNuRI54MTThpHfudyA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "  {\r\n  \"amount\": 10000,\r\n  \"payment_method\": \"savings\",\r\n    \"trans_pin\": \"000000\"\r\n  \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}saving/vault_wallet/topup/plan/fd9815d0-897a-4ce4-9f30-99849183ed06?plan_id=fd9815d0-897a-4ce4-9f30-99849183ed06",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"vault_wallet",
+										"topup",
+										"plan",
+										"fd9815d0-897a-4ce4-9f30-99849183ed06"
+									],
+									"query": [
+										{
+											"key": "plan_id",
+											"value": "fd9815d0-897a-4ce4-9f30-99849183ed06"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Take dividend Vault plan",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MTg3MzAsImV4cCI6MTczMTQyMzUzMH0.EArPNuk8iYLTttRwrM2Ryu-SlJNuRI54MTThpHfudyA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}saving/vault_wallet/plan/fd9815d0-897a-4ce4-9f30-99849183ed06/take_dividend?plan_id=fd9815d0-897a-4ce4-9f30-99849183ed06",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"vault_wallet",
+										"plan",
+										"fd9815d0-897a-4ce4-9f30-99849183ed06",
+										"take_dividend"
+									],
+									"query": [
+										{
+											"key": "plan_id",
+											"value": "fd9815d0-897a-4ce4-9f30-99849183ed06"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Vault plan",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MTg3MzAsImV4cCI6MTczMTQyMzUzMH0.EArPNuk8iYLTttRwrM2Ryu-SlJNuRI54MTThpHfudyA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amount\": \"2000\",\r\n    \"frequency\": \"daily\",\r\n    // \"day_of_week\": \"friday\",\r\n    // \"day_of_month\": \"28\",\r\n    \"auto_deposit\": true,\r\n    // \"payment_method\": \"card\",\r\n    \"show_estimate\": false\r\n    // \"trans_pin\": \"000000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}saving/vault_wallet/plan/fd9815d0-897a-4ce4-9f30-99849183ed06",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"vault_wallet",
+										"plan",
+										"fd9815d0-897a-4ce4-9f30-99849183ed06"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Withdraw",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n    \"trans_pin\": \"000000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}saving/vault_wallet/withdraw",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"vault_wallet",
+										"withdraw"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Grit",
+					"item": [
+						{
+							"name": "Create Grit wallet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MTg3MzAsImV4cCI6MTczMTQyMzUzMH0.EArPNuk8iYLTttRwrM2Ryu-SlJNuRI54MTThpHfudyA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amount\":\"1000000\",\r\n    \"duration_days\":\"94\",\r\n    \"investment_duration\":\"180 - 365 days\",\r\n    \"name\":\"demo\",\r\n    \"dividends_upfront\":false,\r\n    \"payment_method\":\"kodhex\",\r\n    \"trans_pin\":\"000000\",\r\n    \"show_estimate\":false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}saving/grit_wallet",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"grit_wallet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Grit plan",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MTg3MzAsImV4cCI6MTczMTQyMzUzMH0.EArPNuk8iYLTttRwrM2Ryu-SlJNuRI54MTThpHfudyA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amount\":\"1000000\",\r\n    \"duration_days\":\"94\",\r\n    \"investment_duration\":\"180 - 365 days\",\r\n    \"name\":\"test demo\",\r\n    \"dividends_upfront\":false,\r\n    \"payment_method\":\"kodhex\",\r\n    \"trans_pin\":\"000000\",\r\n    \"show_estimate\":false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}saving/grit_wallet/plan",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"grit_wallet",
+										"plan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get user Grit wallet",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MTg3MzAsImV4cCI6MTczMTQyMzUzMH0.EArPNuk8iYLTttRwrM2Ryu-SlJNuRI54MTThpHfudyA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}saving/grit_wallet",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"grit_wallet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Take dividend Grit plan",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MTg3MzAsImV4cCI6MTczMTQyMzUzMH0.EArPNuk8iYLTttRwrM2Ryu-SlJNuRI54MTThpHfudyA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}saving/grit_wallet/plan/take_dividend/6592e635-4111-4c7b-86b9-284eec7706bb",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"grit_wallet",
+										"plan",
+										"take_dividend",
+										"6592e635-4111-4c7b-86b9-284eec7706bb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Withdraw",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MTg3MzAsImV4cCI6MTczMTQyMzUzMH0.EArPNuk8iYLTttRwrM2Ryu-SlJNuRI54MTThpHfudyA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"trans_pin\":\"000000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}saving/grit_wallet/grit_withdraw/75f809f7-9a7b-41ac-8ba4-8919563fa210",
+									"host": [
+										"{{baseurl}}saving"
+									],
+									"path": [
+										"grit_wallet",
+										"grit_withdraw",
+										"75f809f7-9a7b-41ac-8ba4-8919563fa210"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Security Settings",
+			"item": [
+				{
+					"name": "Change security question",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"security_question\": {\r\n        \"question\": \"where do you meet your spouse?\",\r\n        \"answer\": \"lag\"\r\n    },\r\n    \"trans_pin\":\"252525\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}user/change_security_question",
+							"host": [
+								"{{baseurl}}user"
+							],
+							"path": [
+								"change_security_question"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MDUwOTgsImV4cCI6MTczMTQwOTg5OH0.0MJqkXzeRiHJbcWWIyFgUjH5DKYGqQd-VROQmVrLu98",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}user",
+							"host": [
+								"{{baseurl}}user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Account Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MDUwOTgsImV4cCI6MTczMTQwOTg5OH0.0MJqkXzeRiHJbcWWIyFgUjH5DKYGqQd-VROQmVrLu98",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profile_visibility",
+									"value": "{\"private_profile\": true,\n\"hide_kodhex\": false\n}",
+									"type": "text"
+								},
+								{
+									"key": "marital_status",
+									"value": "{\"status\":\"single\",\n\"dependent\": 3}",
+									"type": "text"
+								},
+								{
+									"key": "next_of_kin",
+									"value": "{\"first_name\":\"Elizabeth\",\"last_name\":\"Toweh\",\"phone\":\"+2347031167715\",\"email\":\"tuoyo145@gmail.com\",\"address\":\"value\",\"relationship\":\"single\",\"gender\":\"female\"}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}user",
+							"host": [
+								"{{baseurl}}user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Account profile photo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MDUwOTgsImV4cCI6MTczMTQwOTg5OH0.0MJqkXzeRiHJbcWWIyFgUjH5DKYGqQd-VROQmVrLu98",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profile_visibility",
+									"value": "{\"private_profile\": true,\n\"hide_kodhex\": false\n}",
+									"type": "text"
+								},
+								{
+									"key": "marital_status",
+									"value": "{\"status\":\"single\",\n\"dependent\": 3}",
+									"type": "text"
+								},
+								{
+									"key": "next_of_kin",
+									"value": "{\"first_name\":\"Elizabeth\",\"last_name\":\"Toweh\",\"phone\":\"+2347031167715\",\"email\":\"tuoyo145@gmail.com\",\"address\":\"value\",\"relationship\":\"single\",\"gender\":\"female\"}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}user",
+							"host": [
+								"{{baseurl}}user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contacts on Kodex",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MDUwOTgsImV4cCI6MTczMTQwOTg5OH0.0MJqkXzeRiHJbcWWIyFgUjH5DKYGqQd-VROQmVrLu98",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"contacts\": [\r\n        {\r\n            \"name\": \"jkk\",\r\n            \"phone\": \"+2348031167789\"\r\n        },\r\n        {\r\n            \"name\": \"jason\",\r\n            \"phone\": \"+2348119266959\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}user/contacts_on_kodhex",
+							"host": [
+								"{{baseurl}}user"
+							],
+							"path": [
+								"contacts_on_kodhex"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Transaction History Paginated by Wallets",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}transaction/history/:wallet/:pagenumber/:pagesize",
+							"host": [
+								"{{baseurl}}transaction"
+							],
+							"path": [
+								"history",
+								":wallet",
+								":pagenumber",
+								":pagesize"
+							],
+							"variable": [
+								{
+									"key": "wallet",
+									"value": "kodhex"
+								},
+								{
+									"key": "pagenumber",
+									"value": "5"
+								},
+								{
+									"key": "pagesize",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transaction History",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}transaction/history/5/20",
+							"host": [
+								"{{baseurl}}transaction"
+							],
+							"path": [
+								"history",
+								"5",
+								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate statement",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}transaction/generate_statement/kodhex/2024-10-16T14:01:27.733Z/2024-11-07T14:01:27.733Z?wallet=kodhex&start_date=2024-10-16T14:01:27.733Z&end_date=2024-10-16T14:01:27.733Z",
+							"host": [
+								"{{baseurl}}transaction"
+							],
+							"path": [
+								"generate_statement",
+								"kodhex",
+								"2024-10-16T14:01:27.733Z",
+								"2024-11-07T14:01:27.733Z"
+							],
+							"query": [
+								{
+									"key": "wallet",
+									"value": "kodhex"
+								},
+								{
+									"key": "start_date",
+									"value": "2024-10-16T14:01:27.733Z"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-10-16T14:01:27.733Z"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction by month",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA5NzU3NjMsImV4cCI6MTczMTU4MDU2M30.EY5BI-j12qoFcIfBdfoJBtLNyJpp-3SjWe7MA-gl5lk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}transaction/generate_statement/kodhex/2024-10-16T14:01:27.733Z/2024-11-07T14:01:27.733Z?wallet=kodhex&start_date=2024-10-16T14:01:27.733Z&end_date=2024-10-16T14:01:27.733Z",
+							"host": [
+								"{{baseurl}}transaction"
+							],
+							"path": [
+								"generate_statement",
+								"kodhex",
+								"2024-10-16T14:01:27.733Z",
+								"2024-11-07T14:01:27.733Z"
+							],
+							"query": [
+								{
+									"key": "wallet",
+									"value": "kodhex"
+								},
+								{
+									"key": "start_date",
+									"value": "2024-10-16T14:01:27.733Z"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-10-16T14:01:27.733Z"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction Pin and Password reset",
+			"item": [
+				{
+					"name": "Verify password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MDUwOTgsImV4cCI6MTczMTQwOTg5OH0.0MJqkXzeRiHJbcWWIyFgUjH5DKYGqQd-VROQmVrLu98",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}user/verify_password",
+							"host": [
+								"{{baseurl}}user"
+							],
+							"path": [
+								"verify_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify transaction pin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MDUwOTgsImV4cCI6MTczMTQwOTg5OH0.0MJqkXzeRiHJbcWWIyFgUjH5DKYGqQd-VROQmVrLu98",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"trans_pin\":\"000000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}user/verify_trans_pin",
+							"host": [
+								"{{baseurl}}user"
+							],
+							"path": [
+								"verify_trans_pin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change transaction pin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MDUwOTgsImV4cCI6MTczMTQwOTg5OH0.0MJqkXzeRiHJbcWWIyFgUjH5DKYGqQd-VROQmVrLu98",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"old_trans_pin\":\"123456\",\r\n    \"new_trans_pin\":\"000000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}user/change_transaction_pin",
+							"host": [
+								"{{baseurl}}user"
+							],
+							"path": [
+								"change_transaction_pin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjI2ZmFjMWEtOTVmNS00OGFiLTg4OGYtYTgxZGVkZDE1OTlmIiwiZGV2aWNlX2lkIjoiMTBlMjRkYjYtMWUwNi00YTQwLWI1YTEtNmUzYzYzM2U1ZjA0IiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzA4MDUwOTgsImV4cCI6MTczMTQwOTg5OH0.0MJqkXzeRiHJbcWWIyFgUjH5DKYGqQd-VROQmVrLu98",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"old_password\":\"12345\",\r\n    \"new_password\":\"1234567\",\r\n    \"trans_pin\":\"000000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}user/change_password",
+							"host": [
+								"{{baseurl}}user"
+							],
+							"path": [
+								"change_password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get biller group",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}bill/biller_groups",
+					"host": [
+						"{{baseurl}}bill"
+					],
+					"path": [
+						"biller_groups"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2UxMDQ5YWMtYzVhNC00OTM2LTgzMmMtZjcwNWUwYmZlNjFmIiwiZGV2aWNlX2lkIjoiYTNlMjUxMmYtNzZhZS00NDljLWJkN2UtZjUyZTRkMWQ3MmNmIiwicGxhdGZvcm0iOiJoYXJnb24iLCJzb3VyY2UiOiJtb2JpbGUiLCJpYXQiOjE3MzEwNzY5MjMsImV4cCI6MTczMTY4MTcyM30.nzIW3NChIJKnHfPOTfaLrt4Y34ZO8eg09-2hXXbUkt4",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "https://hargon-mobile.onrender.com/hargon/api/v1/"
+		}
+	]
+}
